@@ -17,6 +17,7 @@ public class LoginPage extends BasePage {
     }
 
     public HomePage login(String username, String password) {
+        System.out.println("user logs in");
         loginInput.click();
         loginInput.clear();
         loginInput.sendKeys(username);
@@ -24,6 +25,7 @@ public class LoginPage extends BasePage {
         passwordInput.clear();
         passwordInput.sendKeys(password);
         loginButton.click();
+        System.out.println("login completed");
         return new HomePage(driver);
     }
 

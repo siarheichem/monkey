@@ -23,6 +23,12 @@ public class HomePage {
     @FindBy(xpath = "//button/div[contains(text(),'Cancel')]")
     private WebElement cancelBtn;
 
+    @FindBy (xpath = "//div[@class='div ng-scope']/div[2]//input")
+    private WebElement lastCheckBox;
+
+    @FindBy (xpath = "//div[@class='checkbox-wrapper']/input")
+    private WebElement checkBoxes;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -47,6 +53,8 @@ public class HomePage {
     public WebElement getCancelBtn() {
         return cancelBtn;
     }
+
+    public WebElement getCheckBoxes() {return checkBoxes;}
 
     public EntryPage entry() {
         createEntry.click();
