@@ -12,7 +12,7 @@ import static org.openqa.selenium.By.xpath;
 public class AddEntryTest extends BaseTest {
     private static final String USRNAME = "rabchinskij_sm@tut.by";
     private static final String PSWRD = "Dimosik16";
-    private static final String MSG = "Диплом!";
+    private static final String MSG = "Diplom!";
 
     @Test
     public void AddEntry () {
@@ -29,11 +29,10 @@ public class AddEntryTest extends BaseTest {
         homePage.getCreateEntry().click();
         EntryPage entryPage = new EntryPage(driver);
         entryPage.editEntry(MSG);
-//        entryPage.getEditNote().sendKeys("1");
-//        entryPage.getBackHomeBtn().click();
-//        int after = driver.findElements(xpath("//div[@class='checkbox-wrapper']/input")).size();
-//        Assert.assertEquals(after,before+1);
-//        System.out.println(after);
+        int after = driver.findElements(xpath("//div[@class='checkbox-wrapper']/input")).size();
+        Assert.assertEquals(after,before+1);
+        System.out.println(after);
+        Assert.assertEquals(homePage.getLastNote().getText(),MSG);
     }
 
 }

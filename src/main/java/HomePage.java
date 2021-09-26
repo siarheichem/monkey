@@ -26,6 +26,9 @@ public class HomePage {
     @FindBy (xpath = "//div[@class='div ng-scope']/div[2]//input")
     private WebElement lastCheckBox;
 
+    @FindBy (xpath = "//div[@class='div ng-scope']/div[2]//a[@class='entry']//div[@class='body ']")
+    private WebElement lastNote;
+
     @FindBy (xpath = "//div[@class='checkbox-wrapper']/input")
     private WebElement checkBoxes;
 
@@ -55,6 +58,8 @@ public class HomePage {
     }
 
     public WebElement getCheckBoxes() {return checkBoxes;}
+
+    public WebElement getLastNote() {return lastNote;}
 
     public EntryPage entry() {
         createEntry.click();
