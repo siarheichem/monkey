@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest {
 
     private static final String USRNAME = "rabchinskij_sm@tut.by";
-    private static final String PSWRD = "Siarhei82";
+    private static final String PSWRD = "Dimosik16";
 
-    @Test
+    @Test(groups = "positive")
     public void LoginTest() {
         HomePage homePage = loginPage.login(USRNAME, PSWRD);
         try {
@@ -20,8 +20,13 @@ public class LoginTest extends BaseTest {
             EntryPage entryPage = new EntryPage(driver);
             entryPage.getDeleteBtn().click();
             driver.switchTo().alert().accept();
-            Assert.assertTrue(entryPage.getDeleteBtn().isEnabled(), "You are not entry");
+            Assert.assertTrue(entryPage.getDeleteBtn().isEnabled(), "You don't entry");
 //            entryPage.getDeleteBtn().click();
 //            homePage.getLogOutBtn().click();
+    }
+    @Test(groups = "negative")
+    public void NotLoginTest() {
+        HomePage homePage = loginPage.notlogin(USRNAME, PSWRD);
+        Assert.assertTrue(loginPage.getLoginButton().isEnabled(), "You are logged in");
     }
 }

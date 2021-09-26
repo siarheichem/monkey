@@ -25,9 +25,20 @@ public class LoginPage extends BasePage {
         passwordInput.sendKeys(password);
         loginButton.click();
         return new HomePage(driver);
-
     }
-    public WebElement getLoginInput() {
-        return loginInput;
+
+    public HomePage notlogin(String username, String password) {
+        loginInput.click();
+        loginInput.clear();
+        loginInput.sendKeys("1");
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        loginButton.click();
+        return new HomePage(driver);
+    }
+
+    public WebElement getLoginButton() {
+        return loginButton;
     }
 }
