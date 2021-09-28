@@ -10,20 +10,26 @@ public class LoginTest extends BaseTest {
     public void LoginTest() {
         HomePage homePage = loginPage.login(USRNAME, PSWRD);
         try {
-                homePage.cancelFeed();
+            homePage.cancelFeed();
+        } catch (Exception e) {
+            System.out.println("No pop-up window 1");
         }
-        catch (Exception e) {
-         System.out.println("No pop-up window");
+        Assert.assertTrue(homePage.getLogOutBtn().isEnabled(), "You are not logged in");
+        homePage.getCreateEntry().click();
+        EntryPage entryPage = new EntryPage(driver);
+        entryPage.getDeleteBtn().click();
+        driver.switchTo().alert().accept();
+        Assert.assertTrue(entryPage.getDeleteBtn().isEnabled(), "You don't entry");
+        homePage.getLogOutBtn().click();
+        try {
+            loginPage.logOutCancelFeed();
+        } catch (Exception e) {
+            System.out.println("No pop-up window 2");
         }
-            Assert.assertTrue(homePage.getLogOutBtn().isEnabled(), "You are not logged in");
-            homePage.getCreateEntry().click();
-            EntryPage entryPage = new EntryPage(driver);
-            entryPage.getDeleteBtn().click();
-            driver.switchTo().alert().accept();
-            Assert.assertTrue(entryPage.getDeleteBtn().isEnabled(), "You don't entry");
-//            entryPage.getDeleteBtn().click();
-//            homePage.getLogOutBtn().click();
+        System.out.println("user logged out");
+
     }
+
     @Test(groups = "negative")
     public void NotLoginTest() {
         HomePage homePage = loginPage.notlogin(USRNAME, PSWRD);

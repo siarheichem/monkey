@@ -1,3 +1,4 @@
+import com.sun.javafx.binding.ExpressionHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,7 @@ public class HomePage {
 
     WebDriver driver;
 
-//    @FindBy(xpath = "//*[contains(text(), 'Welcome')]")
+    //    @FindBy(xpath = "//*[contains(text(), 'Welcome')]")
     @FindBy(id = "create-entry")
     private WebElement createEntry;
 
@@ -23,18 +24,21 @@ public class HomePage {
     @FindBy(xpath = "//button/div[contains(text(),'Cancel')]")
     private WebElement cancelBtn;
 
-    @FindBy (xpath = "//div[@class='div ng-scope']/div[2]//input")
+    @FindBy(xpath = "//div[@class='div ng-scope']/div[2]//input")
     private WebElement lastCheckBox;
 
-    @FindBy (xpath = "//div[@class='div ng-scope']/div[2]//a[@class='entry']//div[@class='body ']")
+    @FindBy(xpath = "//div[@class='div ng-scope']/div[2]//a[@class='entry']//div[@class='body ']")
     private WebElement lastNote;
 
-    @FindBy (xpath = "//div[@class='checkbox-wrapper']/input")
+    @FindBy(xpath = "//div[@class='checkbox-wrapper']/input")
     private WebElement checkBoxes;
+
+    @FindBy(xpath = "//div[@class='donation-notice-buttons']/button[1]")
+    private WebElement logOutBtnNoDonation;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public WebElement getCreateEntry() {
@@ -57,9 +61,17 @@ public class HomePage {
         return cancelBtn;
     }
 
-    public WebElement getCheckBoxes() {return checkBoxes;}
+    public WebElement getCheckBoxes() {
+        return checkBoxes;
+    }
 
-    public WebElement getLastNote() {return lastNote;}
+    public WebElement getLastNote() {
+        return lastNote;
+    }
+
+    public WebElement getLogOutBtnNoDonation() {
+        return logOutBtnNoDonation;
+    }
 
     public EntryPage entry() {
         createEntry.click();
@@ -76,8 +88,13 @@ public class HomePage {
         return new LoginPage(driver);
     }
 
+    public LoginPage logOutCancelFeed() {
+        logOutBtnNoDonation.click();
+        return new LoginPage(driver);
+    }
 }
 
 //button/div[contains(text(),'Cancel')]
 //div[@class='modal ng-scope in']
 //div[@class='modal-content']
+//div[@class='donation-notice-buttons']/button[1]

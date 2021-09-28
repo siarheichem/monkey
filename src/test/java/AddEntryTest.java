@@ -25,14 +25,13 @@ public class AddEntryTest extends BaseTest {
         }
         Assert.assertTrue(homePage.getLogOutBtn().isEnabled(), "You are not logged in");
         int before = driver.findElements(xpath("//div[@class='checkbox-wrapper']/input")).size();
-//        Assert.assertEquals(before,2);
         homePage.getCreateEntry().click();
         EntryPage entryPage = new EntryPage(driver);
         entryPage.editEntry(MSG);
         int after = driver.findElements(xpath("//div[@class='checkbox-wrapper']/input")).size();
         Assert.assertEquals(after,before+1);
-        System.out.println(after);
+        System.out.println("One new note is added");
         Assert.assertEquals(homePage.getLastNote().getText(),MSG);
+        System.out.println("Note is correct");
     }
-
 }

@@ -12,6 +12,9 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@class='btn-text-content']")
     private WebElement loginButton;
 
+    @FindBy(xpath = "//div[@class='donation-notice-buttons']/button[1]")
+    private WebElement logOutBtnNoDonation;
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -40,7 +43,17 @@ public class LoginPage extends BasePage {
         return new HomePage(driver);
     }
 
+    public LoginPage logOutCancelFeed() {
+        logOutBtnNoDonation.click();
+        return new LoginPage(driver);
+    }
+
     public WebElement getLoginButton() {
         return loginButton;
     }
+
+    public WebElement getLogOutBtnNoDonation() {
+        return logOutBtnNoDonation;
+    }
+
 }
