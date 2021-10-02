@@ -3,8 +3,8 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    private static final String USRNAME = "rabchinskij_sm@tut.by";
-    private static final String PSWRD = "Dimosik16";
+    private static final String USRNAME = "RabchynskiS@yandex.by";
+    private static final String PSWRD = "Stand1234";
 
     @Test(groups = "positive")
     public void LoginTest() {

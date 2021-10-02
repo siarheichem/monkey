@@ -10,8 +10,8 @@ import java.util.List;
 import static org.openqa.selenium.By.xpath;
 
 public class AddEntryTest extends BaseTest {
-    private static final String USRNAME = "rabchinskij_sm@tut.by";
-    private static final String PSWRD = "Dimosik16";
+    private static final String USRNAME = "RabchynskiS@yandex.by";
+    private static final String PSWRD = "Stand1234";
     private static final String MSG = "Diplom!";
 
     @Test
