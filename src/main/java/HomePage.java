@@ -33,9 +33,6 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='checkbox-wrapper']/input")
     private WebElement checkBoxes;
 
-    @FindBy(xpath = "//div[@class='donation-notice-buttons']/button[1]")
-    private WebElement logOutBtnNoDonation;
-
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -69,10 +66,6 @@ public class HomePage {
         return lastNote;
     }
 
-    public WebElement getLogOutBtnNoDonation() {
-        return logOutBtnNoDonation;
-    }
-
     public EntryPage entry() {
         createEntry.click();
         return new EntryPage(driver);
@@ -88,10 +81,6 @@ public class HomePage {
         return new LoginPage(driver);
     }
 
-    public LoginPage logOutCancelFeed() {
-        logOutBtnNoDonation.click();
-        return new LoginPage(driver);
-    }
 }
 
 //button/div[contains(text(),'Cancel')]

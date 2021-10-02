@@ -10,10 +10,13 @@ public class LoginPage extends BasePage {
     private WebElement passwordInput;
 
     @FindBy(xpath = "//*[@class='btn-text-content']")
-    private WebElement loginButton;
+    private WebElement loginBtn;
 
     @FindBy(xpath = "//div[@class='donation-notice-buttons']/button[1]")
     private WebElement logOutBtnNoDonation;
+
+    @FindBy (xpath = "//div[@class='login-links']/a[2]")
+    private WebElement register;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -27,9 +30,14 @@ public class LoginPage extends BasePage {
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(password);
-        loginButton.click();
+        loginBtn.click();
         System.out.println("login completed");
         return new HomePage(driver);
+    }
+
+    public RegistPage regist() {
+        register.click();
+        return new RegistPage(driver);
     }
 
     public HomePage notlogin(String username, String password) {
@@ -39,7 +47,7 @@ public class LoginPage extends BasePage {
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(password);
-        loginButton.click();
+        loginBtn.click();
         return new HomePage(driver);
     }
 
@@ -49,7 +57,7 @@ public class LoginPage extends BasePage {
     }
 
     public WebElement getLoginButton() {
-        return loginButton;
+        return loginBtn;
     }
 
     public WebElement getLogOutBtnNoDonation() {
