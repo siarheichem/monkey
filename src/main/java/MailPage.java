@@ -8,8 +8,19 @@ import java.util.concurrent.TimeUnit;
 public class MailPage {
     WebDriver driver;
 
-    @FindBy (xpath = "//span[@class='mail-MessageSnippet-FromText']")
-    private WebElement letter;
+    @FindBy(xpath = "//div[@class='HeadBanner-ButtonsWrapper']//a[2]")
+    private WebElement enterBtn;
+
+    @FindBy(id = "passp-field-login")
+    private WebElement identificator;
+
+    @FindBy(id = "passp:sign-in")
+    private WebElement signInBtn;
+
+    @FindBy(id = "passp-field-passwd")
+    private WebElement pswrdField;
+
+    //span[@class='mail-MessageSnippet-FromText']
 
     public MailPage(WebDriver driver) {
         this.driver = driver;
@@ -17,12 +28,33 @@ public class MailPage {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    public WebElement getLetter() {
-        return letter;
+    public WebElement getEnterBtn() {
+        return enterBtn;
     }
 
-    public MailPage openLetter() {
-        getLetter().click();
-        return new MailPage(driver);
+    public WebElement getIdentificator() {
+        return identificator;
+    }
+
+    public WebElement getSignInBtn() {
+        return signInBtn;
+    }
+
+    public WebElement getPswrdField() {
+        return pswrdField;
+    }
+
+    public LetterPage openLetter() {
+        getEnterBtn().click();
+        getIdentificator().click();
+        getIdentificator().clear();
+        getIdentificator().sendKeys("RabchynskiS@yandex.by");
+        getSignInBtn().click();
+        getPswrdField().click();
+        getPswrdField().clear();
+        getPswrdField().sendKeys("Siarhei82");
+        getSignInBtn().click();
+        return new LetterPage(driver);
+
     }
 }

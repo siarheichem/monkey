@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -8,7 +9,7 @@ public class FinishRegTest {
 
     WebDriver driver;
     MailPage mailPage;
-    private static final String URL = "https://mail.yandex.by/?uid=1492591961#tabs/news";
+    private static final String URL = "https://mail.yandex.by";
 
     @BeforeMethod
     public void setUp() {
@@ -29,8 +30,10 @@ public class FinishRegTest {
 
     @Test
             public void openLetter() {
-        mailPage.openLetter();
+        LetterPage letterPage = mailPage.openLetter();
+//        letterPage.confirmLink();
+//        Assert.assertTrue(letterPage.getNews().isEnabled(),"News should be enabled");
+        letterPage.confirmLink();
+        letterPage.checkReg();
     }
-
-
 }

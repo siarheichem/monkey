@@ -19,6 +19,7 @@ public class LoginPage extends BasePage {
     private WebElement register;
 
     public LoginPage(WebDriver driver) {
+
         super(driver);
     }
 
