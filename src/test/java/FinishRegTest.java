@@ -34,6 +34,6 @@ public class FinishRegTest {
 //        letterPage.confirmLink();
 //        Assert.assertTrue(letterPage.getNews().isEnabled(),"News should be enabled");
         letterPage.confirmLink();
-        letterPage.checkReg();
+//        letterPage.checkReg();
     }
 }
